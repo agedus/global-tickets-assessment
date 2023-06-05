@@ -20,7 +20,7 @@ npm run build
 ```
 
 ### Serving your app
-If you use valet you can go to the program folder and run :
+If you use valet you can go to the program folder and run:
 ```bash
 valet link
 ```
