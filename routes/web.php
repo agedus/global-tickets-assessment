@@ -19,11 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// You need to be logged in to access these routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // The routes for the url overview and add or edit page
     Route::prefix('urls')->group(function () {
         Route::get('/', function () {
             return redirect('/urls/overview');
@@ -38,6 +40,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// The redirect route for the short urls
 Route::get('s/{url:hash}', [UrlsController::class, 'redirect'])->name('redirect.link');
 
 require __DIR__.'/auth.php';

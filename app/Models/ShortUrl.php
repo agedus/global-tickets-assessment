@@ -55,6 +55,11 @@ class ShortUrl extends Model
      */
     protected $casts = [];
 
+    /**
+     * Here we get a route with the hash for the shortend url
+     *
+     * @return string
+     */
     public function getShortendUrlAttribute(): string
     {
         return route('redirect.link', $this->hash);
